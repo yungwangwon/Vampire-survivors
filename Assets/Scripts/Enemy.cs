@@ -38,4 +38,9 @@ public class Enemy : MonoBehaviour
 		// target이 enemy의 x좌표값이 낮다면 flip
 		sprite.flipX = target.position.x < rigid.position.x;
 	}
+
+	private void OnEnable()
+	{
+		target = GameManager.instance.player.GetComponent<Rigidbody2D>();
+	}
 }
