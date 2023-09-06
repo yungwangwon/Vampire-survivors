@@ -4634,6 +4634,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 75666e13af6fd2e43a49a812a638c950, type: 2}
   level: 0
   weapon: {fileID: 0}
+  gear: {fileID: 0}
 --- !u!1 &256577601
 GameObject:
   m_ObjectHideFlags: 0
@@ -4855,8 +4856,6 @@ Transform:
   - {fileID: 1201597865}
   - {fileID: 1105833147}
   - {fileID: 1240099982}
-  - {fileID: 428457096}
-  - {fileID: 620722580}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5083,55 +5082,6 @@ Transform:
   m_Father: {fileID: 1240099982}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &428457095
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 428457096}
-  - component: {fileID: 428457097}
-  m_Layer: 0
-  m_Name: Weapon 0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &428457096
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 428457095}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 292483602}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &428457097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 428457095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc3abe69fe1c9b445b622d8e9e8c82a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  prefabId: 1
-  dmg: 11
-  cnt: 2
-  speed: 0
 --- !u!1 &431760142
 GameObject:
   m_ObjectHideFlags: 0
@@ -5220,6 +5170,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: d254a38f71b487c47932b79c68299e66, type: 2}
   level: 0
   weapon: {fileID: 0}
+  gear: {fileID: 0}
 --- !u!114 &432254909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5731,6 +5682,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: b05d7ab9835cdf145bb9b917e67680d2, type: 2}
   level: 0
   weapon: {fileID: 0}
+  gear: {fileID: 0}
 --- !u!114 &602701110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5825,55 +5777,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602701107}
   m_CullTransparentMesh: 1
---- !u!1 &620722579
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 620722580}
-  - component: {fileID: 620722581}
-  m_Layer: 0
-  m_Name: Weapon 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &620722580
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 620722579}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 292483602}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &620722581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 620722579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc3abe69fe1c9b445b622d8e9e8c82a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 1
-  prefabId: 2
-  dmg: 5
-  cnt: 0
-  speed: 0
 --- !u!1 &704421360
 GameObject:
   m_ObjectHideFlags: 0
@@ -10421,6 +10324,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 6742852cd3698de4ab0d19b7b4ac0a9a, type: 2}
   level: 0
   weapon: {fileID: 0}
+  gear: {fileID: 0}
 --- !u!114 &936016606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12283,6 +12187,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: b91527794e7a5d245aa1f2405276b324, type: 2}
   level: 0
   weapon: {fileID: 0}
+  gear: {fileID: 0}
 --- !u!114 &1828305885
 MonoBehaviour:
   m_ObjectHideFlags: 0

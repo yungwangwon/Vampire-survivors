@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 		sprite = GetComponent<SpriteRenderer>();
 		ani = GetComponent<Animator>();
 		scanner = GetComponent<Scanner>();
-		speed = 5.0f;
+		speed = 3.0f;
 	}
 
 	private void FixedUpdate()
