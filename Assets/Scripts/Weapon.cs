@@ -63,9 +63,7 @@ public class Weapon : MonoBehaviour
                 prefabId = i;
                 break;
             }
-
 		}
-
 
 		switch (id)
         {
@@ -79,6 +77,11 @@ public class Weapon : MonoBehaviour
                 speed = 0.5f;
                 break;
         }
+
+        // Hand Setting
+        Hand hand = player.hands[(int)itemData.itemType];
+        hand.sprite.sprite = itemData.hand;
+        hand.gameObject.SetActive(true);
 
         // GameObject의 자식 오브젝트까지도 해당 함수를 찾아서 실행 
         // DontRequireReceiver = SendMessage에 대한 수신자가 꼭 필요하지 않아도 될 경우
