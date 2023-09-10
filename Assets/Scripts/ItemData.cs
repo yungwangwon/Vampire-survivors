@@ -18,10 +18,11 @@ public class ItemData : ScriptableObject
 	public ItemType	itemType;
 	public int		itemId;
 	public string	itemName;
+	[TextArea]	// 인스펙터창에서 여러줄 입력 가능 속성
 	public string	itemDesc;
 	public Sprite	itemIcon;
 
-	[Header("# Level Dara")]
+	[Header("# Level Data")]
 	public float	baseDmg;
 	public int		baseCnt;
 	public float[]	dmgs;

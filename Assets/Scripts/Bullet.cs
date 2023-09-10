@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
         this.dmg = dmg;
         this.per = per;
 
-        if (per > -1)
+        if (per >= 0)
         {
             rigid.velocity = dir * 15f;
         }
@@ -27,18 +27,24 @@ public class Bullet : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-        if (!collision.CompareTag("Enemy") || per == -1)
+        // Enemy가 아니거나 per가 -100(근접무기) 일경우 충돌로직 실행x
+        if (!collision.CompareTag("Enemy") || per == -100)
             return;
 
         per--;
-        if(per == 0)
+        if(per < 0)
         {
             rigid.velocity = Vector2.zero;
             gameObject.SetActive(false);
         }
+	}
 
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		if (!collision.CompareTag("Area"))
+			return;
 
-
+        gameObject.SetActive(false);
 	}
 
 }

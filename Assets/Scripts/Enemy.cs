@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
-using UnityEditor.U2D.Sprites;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -34,7 +32,9 @@ public class Enemy : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (!isLive || ani.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+		// GetCurrentAnimatorStateInfo - 애니메이션 상태 체크
+		if (!isLive || ani.GetCurrentAnimatorStateInfo(0).IsName("Hit")
+			|| !GameManager.instance.isEnable)
 			return;
 
 		Vector2 dirVec = target.position - rigid.position;
@@ -46,6 +46,8 @@ public class Enemy : MonoBehaviour
 
 	private void LateUpdate()
 	{
+		if (!GameManager.instance.isEnable)
+			return;
 		// target이 enemy의 x좌표값이 낮다면 flip
 		sprite.flipX = target.position.x < rigid.position.x;
 	}
@@ -85,6 +87,9 @@ public class Enemy : MonoBehaviour
 		if (hp > 0) // 피격
 		{
 			ani.SetTrigger("Hit");
+
+			AudioManager.instance.SfxPlay(AudioManager.Sfx.Hit);
+
 		}
 		else // 죽음
 		{
@@ -97,6 +102,9 @@ public class Enemy : MonoBehaviour
 			GameManager.instance.kill++;
 			GameManager.instance.GetExp();
 
+			// 게임 종료후 모든 Enemy가 죽을때 많은 오디오를 실행하지 않기 위함
+			if(GameManager.instance.isEnable)
+				AudioManager.instance.SfxPlay(AudioManager.Sfx.Dead);
 
 		}
 

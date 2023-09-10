@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 	public float speed;
 	public Hand[] hands;
 	public Scanner scanner;
+	public RuntimeAnimatorController[] aniCon;
 
 	Rigidbody2D rigid;
 	SpriteRenderer sprite;
@@ -28,6 +29,8 @@ public class Player : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		if (!GameManager.instance.isEnable)
+			return;
 		//¿Ãµø	
 		Vector2 nextVec = inputVec * speed * Time.fixedDeltaTime ;
 		rigid.MovePosition(rigid.position + nextVec);
@@ -35,6 +38,9 @@ public class Player : MonoBehaviour
 
 	private void LateUpdate()
 	{
+		if (!GameManager.instance.isEnable)
+			return;
+
 		ani.SetFloat("Speed", inputVec.magnitude);
 
 		if(inputVec.x != 0)
@@ -47,4 +53,30 @@ public class Player : MonoBehaviour
 	{
 		inputVec = val.Get<Vector2>();
 	}
+
+	private void OnEnable()
+	{
+		speed *= Character.Speed;
+		ani.runtimeAnimatorController = aniCon[GameManager.instance.playerId];
+	}
+
+	private void OnCollisionStay2D(Collision2D collision)
+	{
+		if (!GameManager.instance.isEnable)
+			return;
+
+		GameManager.instance.hp -= Time.deltaTime * 10.0f;
+
+		if(GameManager.instance.hp < 0)
+		{
+			for(int i =2; i < transform.childCount; i++)
+			{
+				transform.GetChild(i).gameObject.SetActive(false);
+			}
+
+			ani.SetTrigger("Dead");
+			GameManager.instance.GameOver();
+		}
+	}
+
 }

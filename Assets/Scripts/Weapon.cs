@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Weapon : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class Weapon : MonoBehaviour
 
 	void Update()
     {
+		if (!GameManager.instance.isEnable)
+			return;
+
 		switch (id)
 		{
 			case 0:
@@ -36,10 +40,6 @@ public class Weapon : MonoBehaviour
                 }
                 break;
 		}
-
-        // .. Test Code
-        if (Input.GetButtonDown("Jump"))
-            LevelUp(10, 1);
 	}
 
 
@@ -52,8 +52,8 @@ public class Weapon : MonoBehaviour
         transform.localPosition = Vector3.zero;
         // Property Set
         id = itemData.itemId;
-        dmg = itemData.baseDmg;
-        cnt = itemData.baseCnt;
+        dmg = itemData.baseDmg * Character.Damge;
+        cnt = itemData.baseCnt + Character.Count;
 
         // prefabId 검색 > 적용
         for(int i =0;i< GameManager.instance.poolmanager.prefabs.Length;i++)
@@ -68,13 +68,13 @@ public class Weapon : MonoBehaviour
 		switch (id)
         {
             case 0:
-                speed = 150;
+                // 근거리무기 speed값 설정(회전속도)
+                speed = 150 * Character.WeaponSpeed;
                 Positioning();
-
 				break;
             default:
                 // 원거리무기 speed값 설정(주기)
-                speed = 0.5f;
+                speed = 0.5f * Character.WeaponRate;
                 break;
         }
 
@@ -91,7 +91,7 @@ public class Weapon : MonoBehaviour
     // 무기 레벨업
     public void LevelUp(float dmg, int cnt)
 	{
-		this.dmg += dmg;
+		this.dmg += dmg * Character.Damge;
 		this.cnt += cnt;
 
         if (id == 0)
@@ -128,7 +128,7 @@ public class Weapon : MonoBehaviour
             bullet.Rotate(rotVec);
             bullet.Translate(bullet.up * 1.5f, Space.World);
             
-            bullet.GetComponent<Bullet>().Init(dmg, -1, Vector3.zero);    // -1 - 근접공격
+            bullet.GetComponent<Bullet>().Init(dmg, -100, Vector3.zero);    // -100 - 근접공격
         
         }
 
@@ -151,6 +151,9 @@ public class Weapon : MonoBehaviour
 
         // 초기화
 		bullet.GetComponent<Bullet>().Init(dmg, cnt, dir);    // -1 - 근접공격
+
+		AudioManager.instance.SfxPlay(AudioManager.Sfx.Range);
+
 
 	}
 
